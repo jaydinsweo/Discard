@@ -30,8 +30,8 @@ discard node go react
 - [] Take user commands, combinees multiple template files into a single file
 - [] Write `.gitignore` file into the current directory
 
-## Minutes
+For `discard list`
 
-- Use `cobra add list` to add an command `discard list`.
-  - Return a list of all the available templates.
-
+- [] make an empty map
+- [x] Perform a get request with http.Get
+- [] returns the name `{"name": "ATS.gitignore"}` => `{"name": "ATS"}`

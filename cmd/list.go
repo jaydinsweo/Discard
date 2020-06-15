@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"strconv"
 
 	"github.com/spf13/cobra"
 )
@@ -17,13 +18,32 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("list called")
+		listTemplates()
 	},
+}
+
+func listTemplates() {
+	fmt.Printf("Here is the list of templates\n")
+	GetContents("https://api.github.com/repos/toptal/gitignore/contents/templates?ref=master")
+
+}
+
+func addInt(args []string) {
+	var sum int
+
+	for _, value := range args {
+		itemp, err := strconv.Atoi(value)
+
+		if err != nil {
+			fmt.Println(err)
+		}
+		sum += itemp
+	}
+	fmt.Printf("addition of %s is %d \n", args, sum)
 }
 
 func init() {
 	rootCmd.AddCommand(listCmd)
-	fmt.Println("inside init of list")
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
